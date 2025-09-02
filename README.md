@@ -17,31 +17,31 @@ A simple and fun **Tic Tac Toe game** built in **Java**, playable in the console
 
 🚀 How to Run
 1. Clone this repo:
-   ```bash
+   
    git clone https://github.com/your-username/tic-tac-toe-java.git
-````
+
 
 2. Navigate into folder:
 
-   ```bash
+   
    cd tic-tac-toe-java
-   ```
+   
 3. Compile:
 
-   ```bash
+   
    javac TicTacToe.java
-   ```
+   
 4. Run:
 
-   ```bash
+   
    java TicTacToe
-   ```
+  
 
 ---
 
 📊 Example Output
 
-```
+
 ==== Welcome to Tic Tac Toe ====
 -------------
 |   |   |   | 
@@ -53,7 +53,7 @@ A simple and fun **Tic Tac Toe game** built in **Java**, playable in the console
 🎮 Player 1 (X) turn
 Enter row (0-2): 0
 Enter col (0-2): 1
-```
+
 
 ---
 
@@ -73,4 +73,4 @@ Computer Engineer | Java Developer Enthusiast
 
 ⭐ If you like this project, don’t forget to star the repo!
 
-```
+
