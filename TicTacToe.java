@@ -33,6 +33,15 @@ public class TicTacToe {
         }
         return false;
     }
+
+    // ✅ Fixed checkCols()
+    public static boolean checkCols(int[][] A) {
+        for (int i = 0; i < A[0].length; i++) {
+            if ((A[0][i] == A[1][i]) && (A[1][i] == A[2][i]) && A[0][i] != 0)
+                return true;
+        }
+        return false;
+    }
     
     
     public static void main(String[] args) {
