@@ -58,6 +58,10 @@ public class TicTacToe {
         return (checkRows(A) || checkCols(A) || checkDiags(A));
     }
     
+    // ✅ Check if cell is empty
+    public static boolean isFree(int[][] A, int row, int col) {
+        return A[row][col] == 0;
+    }
     
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
