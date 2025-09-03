@@ -52,6 +52,11 @@ public class TicTacToe {
         else
             return false;
     }
+
+    // ✅ Overall winner check
+    public static boolean checkHit(int[][] A) {
+        return (checkRows(A) || checkCols(A) || checkDiags(A));
+    }
     
     
     public static void main(String[] args) {
