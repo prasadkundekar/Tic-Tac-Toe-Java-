@@ -62,6 +62,22 @@ public class TicTacToe {
     public static boolean isFree(int[][] A, int row, int col) {
         return A[row][col] == 0;
     }
+
+    // ✅ Player turn
+    public static boolean getWinner(String turnPrompt, int[][] A, int playerNumber) {
+        System.out.println(turnPrompt);
+        int row = 0, col = 0;
+        while (true) {
+            row = getValidInt("Enter row (0-2): ");
+            col = getValidInt("Enter col (0-2): ");
+            if (isFree(A, row, col)) {
+                break;
+            }
+            System.out.printf("⚠️ [%d,%d] is already filled!\n", row, col);
+        }
+        A[row][col] = playerNumber;
+        return checkHit(A);
+    }
     
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
