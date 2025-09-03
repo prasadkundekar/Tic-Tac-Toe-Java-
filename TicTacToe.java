@@ -42,6 +42,16 @@ public class TicTacToe {
         }
         return false;
     }
+
+    // ✅ Check diagonals
+    public static boolean checkDiags(int[][] A) {
+        if ((A[0][0] == A[1][1]) && (A[1][1] == A[2][2]) && A[0][0] != 0)
+            return true;
+        else if ((A[0][2] == A[1][1]) && (A[1][1] == A[2][0]) && A[1][1] != 0)
+            return true;
+        else
+            return false;
+    }
     
     
     public static void main(String[] args) {
