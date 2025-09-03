@@ -5,7 +5,7 @@ public class TicTacToe {
     static Scanner in = new Scanner(System.in);
     static int player1Score = 0, player2Score = 0;
 
-    // ✅ Get valid integer input
+   
     public static int getValidInt(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -25,8 +25,16 @@ public class TicTacToe {
         }
     }
 
+    // ✅ Check rows
+    public static boolean checkRows(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            if ((A[i][0] == A[i][1]) && (A[i][1] == A[i][2]) && A[i][0] != 0)
+                return true;
+        }
+        return false;
+    }
     
-    // ✅ Main method with replay option
+    
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
         String again;
