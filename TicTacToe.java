@@ -25,7 +25,7 @@ public class TicTacToe {
         }
     }
 
-    // ✅ Check rows
+    
     public static boolean checkRows(int[][] A) {
         for (int i = 0; i < A.length; i++) {
             if ((A[i][0] == A[i][1]) && (A[i][1] == A[i][2]) && A[i][0] != 0)
@@ -34,7 +34,7 @@ public class TicTacToe {
         return false;
     }
 
-    // ✅ Fixed checkCols()
+    
     public static boolean checkCols(int[][] A) {
         for (int i = 0; i < A[0].length; i++) {
             if ((A[0][i] == A[1][i]) && (A[1][i] == A[2][i]) && A[0][i] != 0)
@@ -43,7 +43,7 @@ public class TicTacToe {
         return false;
     }
 
-    // ✅ Check diagonals
+    
     public static boolean checkDiags(int[][] A) {
         if ((A[0][0] == A[1][1]) && (A[1][1] == A[2][2]) && A[0][0] != 0)
             return true;
@@ -53,17 +53,17 @@ public class TicTacToe {
             return false;
     }
 
-    // ✅ Overall winner check
+    
     public static boolean checkHit(int[][] A) {
         return (checkRows(A) || checkCols(A) || checkDiags(A));
     }
     
-    // ✅ Check if cell is empty
+    
     public static boolean isFree(int[][] A, int row, int col) {
         return A[row][col] == 0;
     }
 
-    // ✅ Player turn
+    
     public static boolean getWinner(String turnPrompt, int[][] A, int playerNumber) {
         System.out.println(turnPrompt);
         int row = 0, col = 0;
@@ -79,7 +79,7 @@ public class TicTacToe {
         return checkHit(A);
     }
 
-    // ✅ Print board with X and O
+    
     public static void printBoard(int[][] A) {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
@@ -96,7 +96,7 @@ public class TicTacToe {
         }
     }
 
-    // ✅ Run one game
+    
     public static void playGame() {
         int[][] grid = new int[3][3];
         int foundWinner = 0;
