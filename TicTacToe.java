@@ -78,6 +78,24 @@ public class TicTacToe {
         A[row][col] = playerNumber;
         return checkHit(A);
     }
+
+    // ✅ Print board with X and O
+    public static void printBoard(int[][] A) {
+        System.out.println("-------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                char symbol;
+                if (A[i][j] == 1) symbol = 'X';
+                else if (A[i][j] == 2) symbol = 'O';
+                else symbol = ' ';
+                System.out.print(symbol + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+    }
+
     
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
