@@ -1,76 +1,83 @@
+🎮 Tic Tac Toe (Java Swing GUI)
 
-🎮 Tic Tac Toe (Java Console Game)
-
-A simple and fun **Tic Tac Toe game** built in **Java**, playable in the console. This project helps understand **Java basics, arrays, loops, and game logic**.
-
----
+A clean and interactive Tic Tac Toe game built in Java Swing with options to play Player vs Player or Player vs Computer.
+The game features a scoreboard, automatic game restart, and saves player scores to a file.
 
 ✨ Features
-- Two-player mode (Player 1 = `X`, Player 2 = `O`)  
-- Input validation (no overwriting filled cells)  
-- Win detection (rows, columns, diagonals)  
-- Score tracking between players  
-- Replay option after each game  
-- Clean console UI with grid display  
 
----
+✅ GUI-based 3x3 grid using Java Swing
 
-🚀 How to Run
-1. Clone this repo:
-   
-   git clone https://github.com/your-username/tic-tac-toe-java.git
+✅ Two game modes:
 
+Player vs Player
 
-2. Navigate into folder:
+Player vs Computer (AI makes random moves)
 
-   
-   cd tic-tac-toe-java
-   
-3. Compile:
+✅ Scoreboard updates in real-time
 
-   
-   javac TicTacToe.java
-   
-4. Run:
+✅ Scores saved & loaded from scores.txt
 
-   
-   java TicTacToe
-  
+✅ Automatic restart after each game (Win/Draw)
 
----
+✅ Clean UI (Blue X, Red O, white background)
 
-📊 Example Output
+🖼️ Screenshot (Sample UI)
++---+---+---+
+| X | O |   |
++---+---+---+
+|   | X |   |
++---+---+---+
+|   |   | O |
++---+---+---+
 
+Status: Player 1 (X) Turn
+Score: P1 = 2 | Computer = 1
 
-==== Welcome to Tic Tac Toe ====
--------------
-|   |   |   | 
--------------
-|   |   |   | 
--------------
-|   |   |   | 
--------------
-🎮 Player 1 (X) turn
-Enter row (0-2): 0
-Enter col (0-2): 1
+⚡ How to Run
+
+Clone or download this repository.
+
+Open the project in your IDE (e.g., IntelliJ, Eclipse, or VS Code).
+
+Compile and run the TicTacToeGUI.java file.
+
+javac TicTacToeGUI.java
+java TicTacToeGUI
 
 
----
+Choose your mode:
 
-🔮 Future Ideas
+Player vs Player
 
-* 🤖 Single-player mode (Computer AI)
-* 🎨 Better board UI (A1, B2 style)
-* 🏆 Save scores across sessions
-* 🌐 GUI version (JavaFX / Swing)
+Player vs Computer
 
----
+📂 Files
 
-👤 Author
+TicTacToeGUI.java → Main source code
+
+scores.txt → Stores the scoreboard (auto-created if not present)
+
+🏆 Scoreboard
+
+Player scores are automatically saved to scores.txt.
+
+Example file content:
+
+==== Tic Tac Toe Scores ====
+Player 1 Wins : 5
+Player 2 Wins : 3
+Computer Wins : 2
+============================
+
+🔮 Future Improvements
+
+Add Reset Score button
+
+Add Smarter AI (Minimax Algorithm) instead of random moves
+
+Add Theme support (Dark mode / Light mode)
+
+👨‍💻 Author
 
 Prasad Kundekar
-Computer Engineer | Java Developer Enthusiast
-
-⭐ If you like this project, don’t forget to star the repo!
-
-
+📧 prasadkundekar292@gmail.com
