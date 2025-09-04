@@ -1,11 +1,13 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class TicTacToe {
 
     static Scanner in = new Scanner(System.in);
-    static int player1Score = 0, player2Score = 0;
+    static Random rand = new Random();
+    static int player1Score = 0, player2Score = 0, computerScore = 0;
 
-   
+    // ✅ Get valid integer input
     public static int getValidInt(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -25,7 +27,7 @@ public class TicTacToe {
         }
     }
 
-    
+    // ✅ Check rows
     public static boolean checkRows(int[][] A) {
         for (int i = 0; i < A.length; i++) {
             if ((A[i][0] == A[i][1]) && (A[i][1] == A[i][2]) && A[i][0] != 0)
@@ -34,7 +36,7 @@ public class TicTacToe {
         return false;
     }
 
-    
+    // ✅ Check columns
     public static boolean checkCols(int[][] A) {
         for (int i = 0; i < A[0].length; i++) {
             if ((A[0][i] == A[1][i]) && (A[1][i] == A[2][i]) && A[0][i] != 0)
@@ -43,7 +45,7 @@ public class TicTacToe {
         return false;
     }
 
-    
+    // ✅ Check diagonals
     public static boolean checkDiags(int[][] A) {
         if ((A[0][0] == A[1][1]) && (A[1][1] == A[2][2]) && A[0][0] != 0)
             return true;
@@ -53,20 +55,20 @@ public class TicTacToe {
             return false;
     }
 
-    
+    // ✅ Overall winner check
     public static boolean checkHit(int[][] A) {
         return (checkRows(A) || checkCols(A) || checkDiags(A));
     }
-    
-    
+
+    // ✅ Check if cell is empty
     public static boolean isFree(int[][] A, int row, int col) {
         return A[row][col] == 0;
     }
 
-    
-    public static boolean getWinner(String turnPrompt, int[][] A, int playerNumber) {
+    // ✅ Player turn
+    public static boolean getPlayerMove(String turnPrompt, int[][] A, int playerNumber) {
         System.out.println(turnPrompt);
-        int row = 0, col = 0;
+        int row, col;
         while (true) {
             row = getValidInt("Enter row (0-2): ");
             col = getValidInt("Enter col (0-2): ");
@@ -79,7 +81,20 @@ public class TicTacToe {
         return checkHit(A);
     }
 
-    
+    // ✅ Computer move (random)
+    public static boolean getComputerMove(int[][] A) {
+        int row, col;
+        do {
+            row = rand.nextInt(3);
+            col = rand.nextInt(3);
+        } while (!isFree(A, row, col));
+
+        System.out.printf("🤖 Computer chooses [%d,%d]\n", row, col);
+        A[row][col] = 2; // Computer is Player 2
+        return checkHit(A);
+    }
+
+    // ✅ Print board with X and O
     public static void printBoard(int[][] A) {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
@@ -96,27 +111,36 @@ public class TicTacToe {
         }
     }
 
-    
-    public static void playGame() {
+    // ✅ Run one game
+    public static void playGame(boolean vsComputer) {
         int[][] grid = new int[3][3];
         int foundWinner = 0;
 
         printBoard(grid);
 
         for (int i = 0; i < 9; i++) {
-            if (i % 2 == 0) { // Player 1
-                if (getWinner("🎮 Player 1 (X) turn", grid, 1)) {
+            if (i % 2 == 0) { // Player 1 always goes first
+                if (getPlayerMove("🎮 Player 1 (X) turn", grid, 1)) {
                     foundWinner = 1;
                     System.out.println("🏆 Player 1 WINS!");
                     player1Score++;
                     break;
                 }
-            } else { // Player 2
-                if (getWinner("🎮 Player 2 (O) turn", grid, 2)) {
-                    foundWinner = 1;
-                    System.out.println("🏆 Player 2 WINS!");
-                    player2Score++;
-                    break;
+            } else {
+                if (vsComputer) {
+                    if (getComputerMove(grid)) {
+                        foundWinner = 1;
+                        System.out.println("🏆 Computer WINS!");
+                        computerScore++;
+                        break;
+                    }
+                } else {
+                    if (getPlayerMove("🎮 Player 2 (O) turn", grid, 2)) {
+                        foundWinner = 1;
+                        System.out.println("🏆 Player 2 WINS!");
+                        player2Score++;
+                        break;
+                    }
                 }
             }
             printBoard(grid);
@@ -128,20 +152,31 @@ public class TicTacToe {
         }
 
         printBoard(grid);
-        System.out.println("📊 Score: Player1 = " + player1Score + " | Player2 = " + player2Score);
+
+        if (vsComputer)
+            System.out.println("📊 Score: Player1 = " + player1Score + " | Computer = " + computerScore);
+        else
+            System.out.println("📊 Score: Player1 = " + player1Score + " | Player2 = " + player2Score);
     }
 
-    
+    // ✅ Main method with mode selection
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
+        System.out.print("Choose mode (1 = Player vs Player, 2 = Player vs Computer): ");
+        int mode = getValidInt("");
+        boolean vsComputer = (mode == 2);
+
         String again;
         do {
-            playGame();
+            playGame(vsComputer);
             System.out.print("🔄 Do you want to play again? (y/n): ");
             again = in.nextLine().trim().toLowerCase();
         } while (again.equals("y"));
 
         System.out.println("👋 Thanks for playing! Final Score:");
-        System.out.println("Player1 = " + player1Score + " | Player2 = " + player2Score);
+        if (vsComputer)
+            System.out.println("Player1 = " + player1Score + " | Computer = " + computerScore);
+        else
+            System.out.println("Player1 = " + player1Score + " | Player2 = " + player2Score);
     }
 }
