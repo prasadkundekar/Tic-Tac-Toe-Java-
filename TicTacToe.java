@@ -96,6 +96,41 @@ public class TicTacToe {
         }
     }
 
+    // ✅ Run one game
+    public static void playGame() {
+        int[][] grid = new int[3][3];
+        int foundWinner = 0;
+
+        printBoard(grid);
+
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) { // Player 1
+                if (getWinner("🎮 Player 1 (X) turn", grid, 1)) {
+                    foundWinner = 1;
+                    System.out.println("🏆 Player 1 WINS!");
+                    player1Score++;
+                    break;
+                }
+            } else { // Player 2
+                if (getWinner("🎮 Player 2 (O) turn", grid, 2)) {
+                    foundWinner = 1;
+                    System.out.println("🏆 Player 2 WINS!");
+                    player2Score++;
+                    break;
+                }
+            }
+            printBoard(grid);
+            System.out.println();
+        }
+
+        if (foundWinner == 0) {
+            System.out.println("🤝 It's a draw!");
+        }
+
+        printBoard(grid);
+        System.out.println("📊 Score: Player1 = " + player1Score + " | Player2 = " + player2Score);
+    }
+
     
     public static void main(String[] args) {
         System.out.println("==== Welcome to Tic Tac Toe ====");
